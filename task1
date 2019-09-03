@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+/*Дано трехзначное число. Найти сумму и произведение его цифр.*/
+
+int main()
+{
+	int a;
+	cin >> a;
+	int pid = 0;
+	int dip =1;
+	while (a/10 > 0)
+	{
+		pid += (a % 10);
+		dip *= a % 10;
+		a = a/10;
+	}
+	cout << pid << " " << dip;
+	return 0;
+}
