@@ -48,9 +48,9 @@ void menu()
 		cin >> k;
 		switch (k) {
 		case 1: task9(); break;
-		//case 2: task10(); break;
-		//case 3: task11(); break;
-		//case 4: task12(); break;
+		case 2: task10(); break;
+		case 3: task11(); break;
+		case 4: task12(); break;
 		default: cout << "there is no task with such a number" << endl; menu();
 		}
 	}

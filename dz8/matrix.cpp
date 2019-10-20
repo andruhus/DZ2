@@ -307,24 +307,124 @@ void task9()
 		mas[i] = new int[colms];
 
 	mas = vved(rows, colms);
-	int* serlintrap = new int[rows];
-	for (int i = 0; i < rows; i++)
-	{
 
+	float* serlintrap = new float[(2*rows - 1)];
+	for (int i = 0; i < 2*rows - 1; i++)
+	{
+		int o, j;
 		serlintrap[i] = 0;
-		int o = i;
-		int j = rows - 1;
-		while (j > 0 && o < rows - 1)
+
+		bool t = (i < rows);
+		if (t)
 		{
-			serlintrap[i] += mas[i][j];
-			j--;
-			o++;
+			o = rows - i - 1;
+			j = 0;
+			while (o < rows)
+			{
+				serlintrap[i] += mas[o][j];
+				o++;
+				j++;
+			}
+			serlintrap[i] /= (float)(i + 1);
 		}
-		serlintrap[i] /= (i + 1);
-		cout << i << serlintrap[i] << " ";
+		else
+		{
+			o = 0;
+			j = i - rows + 1;
+			while (j < rows)
+			{
+				serlintrap[i] += mas[o][j];
+				o++;
+				j++;
+			}
+			serlintrap[i] /= (float)(2*rows - i - 1);
+		}
+		
 	}
-	cout << endl;
-	for (int i = 0; i < rows; i++)
+
+
+	for (int i = 0; i < 2*rows - 1; i++)
 		cout << serlintrap[i] << " ";
 	cout << endl;
+}
+
+void task10()
+{
+	cout << "	A square matrix of order M is given. Reset matrix elements, lying on the main diagonaland above it.The conditional statement is not used. to call." << endl;
+	int rows = 0, colms = 0;
+	cout << "!!!WARNING!!! Enter the equal number of rows and columns" << endl;
+	int** mas = new int* [rows];
+	for (int i = 0; i < rows; i++)
+		mas[i] = new int[colms];
+
+	mas = vved(rows, colms);
+
+	for (int i = 0; i < rows; i++)
+		for (int j = i; j < rows; j++)
+			mas[i][j] = 0;
+
+	cout << endl;
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < colms; j++)
+			cout << mas[i][j] << " ";
+		cout << endl;
+	}
+}
+
+void task11()
+{
+	cout << "	A square matrix A of order M is given. Rotate it through an angle of 180 ° (at the same time, element A1, 1 will exchange places with AM, M, element A1, 2 - with AM, M – 1 etc.).Do not use the auxiliary matrix." << endl;
+	int rows = 0, colms = 0;
+	cout << "!!!WARNING!!! Enter the equal number of rows and columns" << endl;
+	int** mas = new int* [rows];
+	for (int i = 0; i < rows; i++)
+		mas[i] = new int[colms];
+
+	mas = vved(rows, colms);
+
+	for (int i = 0; i < rows; i++)
+		for (int j = i+1; j < rows; j++)
+			swap(mas[i][j], mas[rows - 1 - i][rows - 1 - j]);
+	for (int i = 0; i <= rows / 2; i++)
+		swap(mas[i][i], mas[rows - 1 - i][rows - 1 - i]);
+
+	cout << endl;
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < colms; j++)
+			cout << mas[i][j] << " ";
+		cout << endl;
+	}
+}
+
+void task12()
+{
+	cout << "A square matrix A of order M is given. Rotate it through an angle of 90 ° to negative direction, i.e.clockwise(in this case, the element A1, 1 goes to A1, M, element A1, M to AM, M, etc.).Auxiliary material do not use the mouth." << endl;
+	int rows = 0, colms = 0;
+	cout << "!!!WARNING!!! Enter the equal number of rows and columns" << endl;
+	int** mas = new int* [rows];
+	for (int i = 0; i < rows; i++)
+		mas[i] = new int[colms];
+
+	mas = vved(rows, colms);
+
+	for (int i = 0; i < rows / 2; i++)
+		for (int j = 0; j < rows; j++)
+			swap(mas[i][j], mas[rows - 1 - i][j]);
+
+	for (int i = 1; i < rows; i++)
+		for (int j = 0; j < i; j++)
+			swap(mas[i][j], mas[j][i]);
+
+	cout << endl;
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < colms; j++)
+			cout << mas[i][j] << " ";
+		cout << endl;
+	}
 }
