@@ -9,19 +9,21 @@ void task1();
 void task2();
 void task3();
 void task4();
-void task5();
+
 
 
 // My home preparation
 //	Structs
 struct Data
 {
-	char* data;
-	int data_size;
+	
+	int data_size =64;
+	char* data = new char[data_size];
 };
 
-struct Node
+class Node
 {
+public:
 	Data data;
 	
 
@@ -29,7 +31,12 @@ struct Node
 	Node* right = nullptr;
 	Node* root = nullptr;
 
+	void Print_Data();
+	void Display();
+	
 };
+
+Node* Set_Tree(Node* tree);
 
 class Graph
 {
@@ -40,6 +47,7 @@ public:
 	void Print_Graph();
 
 };
+bool operator == (Data v1, Data v2);
 
 
 
