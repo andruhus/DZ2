@@ -1,6 +1,6 @@
 #pragma once
-#include "..\\Menu\Menu.h"
-#include "..\\Menu\Menus.cpp"
+#include "Menu.h"
+#include "Menus.cpp"
 
 void Set_Tree();
 void Calculate();
